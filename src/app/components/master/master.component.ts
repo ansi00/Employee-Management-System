@@ -6,18 +6,18 @@ import { CommonModule, NgIf } from '@angular/common';
 @Component({
   selector: 'app-master',
   standalone: true,
-  imports: [RolesComponent,DesignationComponent,CommonModule],
+  imports: [RolesComponent, DesignationComponent, CommonModule],
   templateUrl: './master.component.html',
-  styleUrl: './master.component.css'
+  styleUrl: './master.component.css',
 })
 export class MasterComponent {
-currentComponent : string = "roles"
+  currentComponent: string = 'roles';
 
-changeTab(val:string){
-  if(val === "roles"){
-    this.currentComponent = "roles"
-  }else{
-    this.currentComponent = "designation"
+  changeTab(val: string) {
+    if (val === 'roles') {
+      this.currentComponent = 'roles';
+    } else {
+      this.currentComponent = 'designation';
+    }
   }
-}
 }

@@ -9,20 +9,23 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './roles.component.html',
-  styleUrl: './roles.component.css'
+  styleUrl: './roles.component.css',
 })
-export class RolesComponent implements OnInit{
-roleList : IRole[] = []
-http = inject(HttpClient)
+export class RolesComponent implements OnInit {
+  roleList: IRole[] = [];
+  http = inject(HttpClient);
 
-ngOnInit(): void {
-this.getAllRoles()
-}
+  ngOnInit(): void {
+    this.getAllRoles();
+  }
 
-getAllRoles(){
-  this.http.get<ApiResponseModel>("https://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles").subscribe((res:ApiResponseModel)=>{
-this.roleList = res.data
-  })
-}
-
+  getAllRoles() {
+    this.http
+      .get<ApiResponseModel>(
+        'https://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles'
+      )
+      .subscribe((res: ApiResponseModel) => {
+        this.roleList = res.data;
+      });
+  }
 }

@@ -7,17 +7,20 @@ import { ApiResponseModel, IDesignation } from '../../model/interface/role';
   standalone: true,
   imports: [],
   templateUrl: './designation.component.html',
-  styleUrl: './designation.component.css'
+  styleUrl: './designation.component.css',
 })
 export class DesignationComponent implements OnInit {
-  designationList : IDesignation [] = []
-  masterService = inject(MasterService)
+  designationList: IDesignation[] = [];
+  masterService = inject(MasterService);
 
-ngOnInit(): void {
-  this.masterService.getDesignation().subscribe((res:ApiResponseModel)=>{
-    this.designationList = res.data;
-  }, error=>{
-    alert("API Error")
-  })
-}
+  ngOnInit(): void {
+    this.masterService.getDesignation().subscribe(
+      (res: ApiResponseModel) => {
+        this.designationList = res.data;
+      },
+      (error) => {
+        alert('API Error');
+      }
+    );
+  }
 }
