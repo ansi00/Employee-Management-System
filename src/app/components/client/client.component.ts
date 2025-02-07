@@ -40,4 +40,25 @@ export class ClientComponent implements OnInit {
         }
       });
   }
+
+  onDelete(id: number) {
+    const isDelete = confirm('Are you sure you want to delete?');
+    if (isDelete) {
+      this.clientService
+        .deleteClientById(id)
+        .subscribe((res: ApiResponseModel) => {
+          if (res.result) {
+            alert('Client deleted successfully');
+            this.loadClient();
+            this.clientObj = new Client();
+          } else {
+            alert(res.message);
+          }
+        });
+    }
+  }
+
+  onEdit(data: Client) {
+    this.clientObj = data;
+  }
 }
