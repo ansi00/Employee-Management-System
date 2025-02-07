@@ -15,6 +15,13 @@ export class ClientService {
       environment.API_URL + 'GetAllClients'
     );
   }
+
+  getAllEmployee(): Observable<ApiResponseModel> {
+    return this.http.get<ApiResponseModel>(
+      environment.API_URL + 'GetAllEmployee'
+    );
+  }
+
   addUpdate(obj: Client): Observable<ApiResponseModel> {
     return this.http.post<ApiResponseModel>(
       environment.API_URL + 'AddUpdateClient',
@@ -24,6 +31,13 @@ export class ClientService {
   deleteClientById(id: number): Observable<ApiResponseModel> {
     return this.http.delete<ApiResponseModel>(
       environment.API_URL + 'DeleteClientByClientId?clientId=' + id
+    );
+  }
+
+  addClientProjectUpdate(obj: Client): Observable<ApiResponseModel> {
+    return this.http.post<ApiResponseModel>(
+      environment.API_URL + 'AddUpdateClientProject',
+      obj
     );
   }
 }
