@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -6,13 +6,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
-import { ApiResponseModel, IEmployee } from '../../model/interface/role';
+import {
+  ApiResponseModel,
+  ClientProject,
+  IEmployee,
+} from '../../model/interface/role';
 import { Client } from '../../model/class/Client';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-client-project',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css',
 })
@@ -39,10 +44,12 @@ export class ClientProjectComponent implements OnInit {
   clientService = inject(ClientService);
   employeeList: IEmployee[] = [];
   clientList: Client[] = [];
+  projectList = signal(<ClientProject[]>[]);
 
   ngOnInit(): void {
     this.getAllEmployees();
     this.getAllClients();
+    this.getAllClientProjects();
   }
 
   getAllEmployees() {
@@ -64,9 +71,18 @@ export class ClientProjectComponent implements OnInit {
       .subscribe((res: ApiResponseModel) => {
         if (res.result) {
           alert('Project created successfully');
+          this.getAllClientProjects();
         } else {
           alert(res.message);
         }
+      });
+  }
+
+  getAllClientProjects() {
+    this.clientService
+      .getAllClientProjects()
+      .subscribe((res: ApiResponseModel) => {
+        this.projectList.set(res.data);
       });
   }
 }

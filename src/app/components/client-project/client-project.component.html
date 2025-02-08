@@ -9,32 +9,27 @@
               <thead>
                 <tr>
                   <th>Sr No.</th>
-                  <th>Company Name</th>
-                  <th>Person Name</th>
-                  <th>Contact No</th>
-                  <th>City</th>
+                  <th>Client Name</th>
+                  <th>Project Name</th>
+                  <th>Emp Name</th>
+                  <th>Start Date</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ item.companyName }}</td>
-                    <td>{{ item.contactPersonName }}</td>
-                    <td>{{ item.contactNo }}</td>
-                    <td>{{ item.city }}</td>
-                    <td>
-                      <button class="btn btn-primary" >
-                        Edit
-                      </button>
-                      <button
-                        class="btn btn-danger"
-                        
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr> -->
+                @for (item of projectList(); track $index) {
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ item.clientName }}</td>
+                  <td>{{ item.projectName }}</td>
+                  <td>{{ item.empName }}</td>
+                  <td>{{ item.startDate | date : "dd-MM-yyyy" }}</td>
+                  <td>
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                  </td>
+                </tr>
+                }
               </tbody>
             </table>
           </div>

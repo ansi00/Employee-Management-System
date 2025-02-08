@@ -40,4 +40,10 @@ export class ClientService {
       obj
     );
   }
+
+  getAllClientProjects(): Observable<ApiResponseModel> {
+    return this.http.get<ApiResponseModel>(
+      environment.API_URL + 'GetAllClientProjects'
+    );
+  }
 }
