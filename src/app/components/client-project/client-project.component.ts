@@ -13,11 +13,12 @@ import {
 } from '../../model/interface/role';
 import { Client } from '../../model/class/Client';
 import { DatePipe } from '@angular/common';
+import { AlertComponent } from '../../reusable Components/alert/alert.component';
 
 @Component({
   selector: 'app-client-project',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe],
+  imports: [ReactiveFormsModule, DatePipe, AlertComponent],
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css',
 })

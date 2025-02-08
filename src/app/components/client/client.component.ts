@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
 import { ApiResponseModel } from '../../model/interface/role';
 import { UpperCasePipe } from '@angular/common';
+import { AlertComponent } from '../../reusable Components/alert/alert.component';
 
 @Component({
   selector: 'app-client',
   standalone: true,
-  imports: [FormsModule, UpperCasePipe],
+  imports: [FormsModule, UpperCasePipe, AlertComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css',
 })
